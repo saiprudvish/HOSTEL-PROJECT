@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AdminService } from '../info/admin.service';
 
 @Component({
   selector: 'app-admin',
@@ -8,8 +9,9 @@ import { Router } from '@angular/router';
 })
 export class AdminComponent implements OnInit {
 
+  users:any;
   status:boolean | undefined
-  constructor(private router:Router) {
+  constructor(private router:Router,private userObj:AdminService) {
     if(localStorage.getItem("username")!=null){
        this.status=true;
      }
@@ -21,8 +23,23 @@ export class AdminComponent implements OnInit {
      this.router.navigateByUrl('/');
    }
 
+userLogut(){
+  this.router.navigateByUrl('/info')
+}
+
   ngOnInit(): void {
     
+  //    this.userObj.getUser().subscribe((userData:any)=>{
+  //       this.users=userData.result;
+  //         console.log(this.users)
+  
+  //   },
+  //     err=>{
+  //       console.log("err in getting info data",err)
+  //     }
+  
+  //   ) 
+
   }
 
   

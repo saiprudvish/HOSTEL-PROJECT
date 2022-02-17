@@ -25,7 +25,7 @@ logInUser(){
     
     alert("Login Success");
     localStorage.setItem("username",this.username);
-    this.router.navigateByUrl('/admin');
+    this.router.navigateByUrl('/newadmin');
     console.log("Welcome to the dashboard");
     this.status=true;
   }
