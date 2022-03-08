@@ -37,20 +37,40 @@ const pool =createPool({
 // if (err) throw err;  
 // console.log("1 record inserted");  
 // });
-pool.query('select * from personalinfo',(err,result,fields)=>{
+pool.query('select * from info',(err,result,fields)=>{
     if(err){
         return console.log(err);
     }
-    console.log(result)
+    //console.log(result)
     userApi.get("/data", (req, res) => {
     
         res.send({result})
-      
      
       });
 })
 
-
+pool.query('select * from info JOIN dashboard ON info.bid=dashboard.bid and dashboard.C1="in" ',(err,result,fields)=> {
+    if(err){
+        return console.log(err);
+    }
+    console.log(result)
+    userApi.get("/dash", (req, res) => {
+    
+        res.send({result})
+     
+      });
+})
+pool.query('select * from info JOIN dashboard ON info.bid=dashboard.bid and dashboard.C1="out" ',(err,result,fields)=> {
+    if(err){
+        return console.log(err);
+    }
+    console.log(result)
+    userApi.get("/dasho", (req, res) => {
+    
+        res.send({result})
+     
+      });
+})
 
 
 //export userApi

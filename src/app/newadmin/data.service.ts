@@ -12,4 +12,10 @@ export class DataService {
   getUser():Observable<any>{
     return this.hc.get<any>('/user/data')
   }
+  getdash():Observable<any>{
+    return this.hc.get<any>('/user/dash')
+  }
+  getdasho():Observable<any>{
+    return this.hc.get<any>('/user/dasho')
+  }
 }
