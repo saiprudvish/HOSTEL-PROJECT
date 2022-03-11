@@ -14,13 +14,11 @@ export class OutComponent implements OnInit {
   ngOnInit(): void {
     this.userObj.getdasho().subscribe((userData:any)=>{
       this.users=userData.result;
-        console.log(this.users)
-
+        //console.log(this.users)
   },
     err=>{
       console.log("err in getting info data",err)
     }
-
   )
   }
   status:boolean=true

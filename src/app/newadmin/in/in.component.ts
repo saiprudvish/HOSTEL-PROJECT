@@ -9,7 +9,10 @@ import { DataService } from '../data.service';
 export class InComponent implements OnInit {
 
   users:any;
-  constructor(private userObj:DataService) { }
+  first:any;
+  outs:any;
+  constructor(private userObj:DataService) { 
+  }
 
   ngOnInit(): void {
     this.userObj.getdash().subscribe((userData:any)=>{
@@ -21,8 +24,22 @@ export class InComponent implements OnInit {
       console.log("err in getting info data",err)
     }
 
-  )
-  }
+  )}
+//   this.userObj.getdasho().subscribe((userData:any)=>{
+//     this.first=userData.result;
+//     console.log(this.first[0])
+
+// },
+//   err=>{
+//     console.log("err in getting info data",err)
+//   }
+// for (var j = 0; j < this.first.length; j++){
+
+//   console.log(this.first[0].rno);
+  
+//   }
+//   }
+
 
 
 }

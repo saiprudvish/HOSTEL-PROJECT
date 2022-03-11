@@ -1,4 +1,4 @@
-<div class="container">  
+<!-- <div class="container">  
   <button class="btn btn-danger mt-5 mx-5"  (click)="pills()">IN AND OUT</button>
   <div *ngIf="!status">    
 <ul class="nav nav-tabs mt-3 justify-content-center">
@@ -11,7 +11,21 @@
 </li>
 </ul>
 </div>
-</div>
+</div> -->
+
+<div class="dropdown mx-5 mt-5">
+  <button class="btn btn-secondary  dropdown-toggle " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"  aria-expanded="false">
+  Select one
+  </button>
+  <ul class="dropdown-menu form-select" aria-label="Default select example" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" routerLink="in">STUDENTS IN </a></li>
+    <li><a class="dropdown-item" routerLink="out">STUDENTS OUT</a></li>
+  </ul>
+</div> 
+
+
+
+
 
 
 <div>

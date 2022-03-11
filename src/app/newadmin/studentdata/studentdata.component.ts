@@ -14,7 +14,7 @@ users:any;
 
         this.userObj.getUser().subscribe((userData:any)=>{
         this.users=userData.result;
-          console.log(this.users)
+         // console.log(this.users)
   
     },
       err=>{

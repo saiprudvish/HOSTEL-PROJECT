@@ -49,22 +49,23 @@ pool.query('select * from info',(err,result,fields)=>{
       });
 })
 
-pool.query('select * from info JOIN dashboard ON info.bid=dashboard.bid and dashboard.C1="in" ',(err,result,fields)=> {
+pool.query('select * from info,dashboard inner join log on dashboard.bid=log.bid and dashboard.logdate=log.login where dashboard.C1="in"  and info.bid=dashboard.bid  ',(err,result,fields)=> {
     if(err){
         return console.log(err);
     }
-    console.log(result)
+    //console.log(result)
     userApi.get("/dash", (req, res) => {
     
         res.send({result})
+        console.log(result)
      
       });
 })
-pool.query('select * from info JOIN dashboard ON info.bid=dashboard.bid and dashboard.C1="out" ',(err,result,fields)=> {
+pool.query('select * from info,dashboard inner join log on dashboard.bid=log.bid and dashboard.logdate=log.login where dashboard.C1="out"  and info.bid=dashboard.bid  ',(err,result,fields)=> {
     if(err){
         return console.log(err);
     }
-    console.log(result)
+    //console.log(result)
     userApi.get("/dasho", (req, res) => {
     
         res.send({result})
