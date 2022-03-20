@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 import { DataService } from '../data.service';
 
 @Component({
@@ -8,7 +10,8 @@ import { DataService } from '../data.service';
 })
 export class StudentdataComponent implements OnInit {
 users:any;
-  constructor(private userObj:DataService) { }
+searchTerm:any;
+  constructor(private userObj:DataService,private ar:Router) { }
 
   ngOnInit(): void {
 
@@ -24,4 +27,9 @@ users:any;
     )
   }
 
+
+
+//   onSelectid(bid:any){
+//     this.ar.navigateByUrl('data/'+bid)
+//  }
 }

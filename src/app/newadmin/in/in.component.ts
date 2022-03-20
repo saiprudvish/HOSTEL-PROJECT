@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 
 @Component({
@@ -9,15 +11,20 @@ import { DataService } from '../data.service';
 export class InComponent implements OnInit {
 
   users:any;
+  iddata:any;
   first:any;
   outs:any;
-  constructor(private userObj:DataService) { 
+  searchTerm:any;
+  constructor(private userObj:DataService,private ar:Router) { 
   }
 
   ngOnInit(): void {
     this.userObj.getdash().subscribe((userData:any)=>{
       this.users=userData.result;
-        console.log(this.users)
+       // console.log(this.users)
+
+
+
 
   },
     err=>{
@@ -39,6 +46,14 @@ export class InComponent implements OnInit {
   
 //   }
 //   }
+
+
+
+
+// onSelectid(bid:any){
+//    this.ar.navigateByUrl('in/'+bid)
+// }
+
 
 
 

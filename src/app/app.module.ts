@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { InComponent } from './in/in.component';
-import { OutComponent } from './out/out.component';
+
 
 
 
@@ -14,9 +14,7 @@ import { OutComponent } from './out/out.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    InComponent,
-    OutComponent,
-    
+    InComponent
   ],
   imports: [
     BrowserModule,

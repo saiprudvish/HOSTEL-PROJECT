@@ -9,10 +9,20 @@ import { DataService } from '../data.service';
 export class DashboardComponent implements OnInit {
 
   users:any;
+  searchTerm:any;
   constructor(private userObj:DataService) { }
 
   ngOnInit(): void {
-    
+    this.userObj.getdash().subscribe((userData:any)=>{
+      this.users=userData.result;
+        //console.log(this.users)
+
+  },
+    err=>{
+      console.log("err in getting info data",err)
+    }
+
+  )
 
 
   }

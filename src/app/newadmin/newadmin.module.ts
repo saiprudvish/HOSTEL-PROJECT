@@ -7,6 +7,9 @@ import { StudentdataComponent } from './studentdata/studentdata.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { InComponent } from './in/in.component';
 import { OutComponent } from './out/out.component';
+import { SearchPipe } from './search.pipe';
+import { FormsModule } from '@angular/forms';
+import { UserdetailsComponent } from './userdetails/userdetails.component';
 
 
 @NgModule({
@@ -15,10 +18,13 @@ import { OutComponent } from './out/out.component';
     StudentdataComponent,
     DashboardComponent,
     InComponent,
-    OutComponent
+    OutComponent,
+    SearchPipe,
+    UserdetailsComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
     NewadminRoutingModule
   ]
 })

@@ -9,6 +9,7 @@ import { DataService } from '../data.service';
 export class OutComponent implements OnInit {
 
   users:any;
+  searchTerm:any;
   constructor(private userObj:DataService) { }
 
   ngOnInit(): void {

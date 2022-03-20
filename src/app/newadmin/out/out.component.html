@@ -1,6 +1,9 @@
 
 <h1 class="student text-center mt-5" >OUT STUDENTS DATA<i class="fa-solid fa-user-group text-danger"></i></h1>
 
+<input type="text" name="rno" placeholder="Search by rno" class="form-control mt-2 w-25" [(ngModel)]="searchTerm" >
+
+
  <table class="table text-dark  mt-5 " >
     <div class="background w-75 d-block mx-auto">
     <table class="table table-striped text-dark  p-5 backc" >
@@ -16,8 +19,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let p of users">
-                <td> <strong>{{p.rno}}</strong></td>
+            <tr *ngFor="let p of users  | search:searchTerm">
+                <td   routerLink="{{p.bid}}"  > <strong>{{p.rno}}</strong></td>
                 <td> <strong>{{p.studentname}}</strong></td>
                 <td> <strong>{{p.year}}</strong></td>
                 <td> <strong>{{p.branch}}</strong></td>

@@ -18,4 +18,7 @@ export class DataService {
   getdasho():Observable<any>{
     return this.hc.get<any>('/user/dasho')
   }
+  getusersData(id:any):Observable<any>{
+    return this.hc.get(`/user/getuser/${id}`)
+  }
 }
