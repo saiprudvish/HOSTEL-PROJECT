@@ -24,7 +24,7 @@ export class UserdetailsComponent implements OnInit {
         //get id from url
        
         var url = this.ar.snapshot.paramMap.get('bid')
-  console.log(url);
+ // console.log(url);
 
     
         //get data of movie with this current id
@@ -32,7 +32,8 @@ export class UserdetailsComponent implements OnInit {
           obj=>{
       
             this.Obj=obj.result;
-            console.log(this.Obj)
+           // console.log(this.Obj)
+
 
           },
           err=>{

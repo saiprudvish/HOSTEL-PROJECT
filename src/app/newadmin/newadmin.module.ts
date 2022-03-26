@@ -10,7 +10,8 @@ import { OutComponent } from './out/out.component';
 import { SearchPipe } from './search.pipe';
 import { FormsModule } from '@angular/forms';
 import { UserdetailsComponent } from './userdetails/userdetails.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
+import { DaterangedetailsComponent } from './daterangedetails/daterangedetails.component';
 
 @NgModule({
   declarations: [
@@ -20,10 +21,12 @@ import { UserdetailsComponent } from './userdetails/userdetails.component';
     InComponent,
     OutComponent,
     SearchPipe,
-    UserdetailsComponent
+    UserdetailsComponent,
+    DaterangedetailsComponent
   ],
   imports: [
     CommonModule,
+    NgxPaginationModule,
     FormsModule,
     NewadminRoutingModule
   ]

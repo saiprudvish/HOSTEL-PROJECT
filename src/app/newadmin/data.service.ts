@@ -21,4 +21,7 @@ export class DataService {
   getusersData(id:any):Observable<any>{
     return this.hc.get(`/user/getuser/${id}`)
   }
+  getdate():Observable<any>{
+    return this.hc.get<any>('/user/getval')
+  }
 }

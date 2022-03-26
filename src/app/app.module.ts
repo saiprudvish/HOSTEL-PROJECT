@@ -6,9 +6,8 @@ import { AppComponent } from './app.component';
 import { HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { InComponent } from './in/in.component';
-
-
-
+import {NgxPaginationModule} from 'ngx-pagination';
+import { NgApexchartsModule } from "ng-apexcharts";
 
 @NgModule({
   declarations: [
@@ -18,9 +17,11 @@ import { InComponent } from './in/in.component';
   ],
   imports: [
     BrowserModule,
+    NgxPaginationModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgApexchartsModule
     
   ],
   providers: [],

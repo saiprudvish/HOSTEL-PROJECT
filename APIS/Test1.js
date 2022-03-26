@@ -57,7 +57,8 @@ pool.query('select * from info,dashboard inner join log on dashboard.bid=log.bid
     userApi.get("/dash", (req, res) => {
     
         res.send({result})
-     //   console.log(result)
+       
+      
      
       });
 })
@@ -80,15 +81,31 @@ userApi.get("/getuser/:id",  (req, res, next) => {
 
 
     let selectedid = req.params.id;
-    console.log(selectedid);
+   // console.log(selectedid);
     pool.query('select * from info NATURAL JOIN dashboard where info.bid='+selectedid+' ',(err,result,fields)=> {
         if(err){
             return console.log(err);
         }
-        console.log(result)
+       // console.log(result[0]);
         
             res.send({result})
-         
+           
+    })
+   
+});
+
+
+userApi.get("/getval",  (req, res, next) => {
+
+   // console.log(selectedid);
+    pool.query('select * from info NATURAL JOIN dashboard ',(err,result,fields)=> {
+        if(err){
+            return console.log(err);
+        }
+       console.log(result[0]);
+        
+            res.send({result})
+           console.log(result)
     })
    
 });
