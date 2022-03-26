@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NewadminComponent } from './newadmin.component';
 import { StudentdataComponent } from './studentdata/studentdata.component';
 import { UserdetailsComponent } from './userdetails/userdetails.component';
+import { DaterangedetailsComponent } from './daterangedetails/daterangedetails.component';
 
 const routes: Routes = [{ path: '', component: NewadminComponent ,children:[
   {path:'data',component:StudentdataComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [{ path: '', component: NewadminComponent ,children:[
     
    
     {path:'in',component:InComponent},
-  
+     
+    {path:'range',component:DaterangedetailsComponent},
     {path:'out',component:OutComponent},
     {path:'in/:bid',component:UserdetailsComponent},
     {path:'out/:bid',component:UserdetailsComponent}

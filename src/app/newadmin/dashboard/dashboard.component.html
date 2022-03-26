@@ -3,57 +3,17 @@
   Select one
   </button>
 
-  <div class="d-inline"> 
 
-    <h5 class="text-dark d-inline ms-5">FROM</h5>
-    <input  type="date" class="mx-5" id="username1" name="username1" [(ngModel)]="username1">
-    <h5 class="text-dark d-inline">TO</h5>
-<input type="date" class="mx-5"  id="username" name="username" [(ngModel)]="username">
-<button  type="submit" class="btn btn-danger data"  (click)="getData()">Get Data</button>
-</div>
 
   <ul class="dropdown-menu form-select" aria-label="Default select example" aria-labelledby="dropdownMenuButton1">
     <li><a class="dropdown-item" routerLink="in">STUDENTS IN </a></li>
     <li><a class="dropdown-item" routerLink="out">STUDENTS OUT</a></li>
+    <li><a class="dropdown-item" routerLink="range"> Date Range Data</a></li>
   </ul>
 <div>
 
 
-  <table  *ngIf="!stas"  class="table text-dark  mt-5 " >
-    <div class="background w-75 d-block mx-auto">
-   <h1 *ngIf="!stus" class="text-dark">NO DATA</h1>
-    <table   *ngIf="stus" class="table table-striped text-dark  p-5 backc" >
-        <thead>
-            <tr>
-                <th>ROLL NUMBER</th>
-                <th>STUDENT NAME</th>
-                <th>YEAR</th>
-                <th>BRANCH</th>
-                <th>GENDER</th>
-                <th>ROOM NUMBER</th>
-                <th>Time</th>
-                <th>IN/OUT</th>
-                <th>bid</th>
-                
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let p of vals">
-                <td > <strong>{{p.rno}}</strong></td>
-                <td> <strong>{{p.studentname}}</strong></td>
-                <td> <strong>{{p.year}}</strong></td>
-                <td> <strong>{{p.branch}}</strong></td>
-                <td> <strong>{{p.gender}}</strong></td>
-                <td> <strong>{{p.room_no}}</strong></td>  
-                <td><strong>{{p.logdate}}</strong></td>
-                <td><strong>{{p.C1}}</strong></td>
-                <td><strong>{{p.bid}}</strong></td>
-                </tr>      
-            </tbody>
-            </table>
-        
-            </div>
-</table> 
+  
 
 
 
