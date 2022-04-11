@@ -31,23 +31,29 @@ this.stas=false
       for(let i in this.dates){
          this.dateData=this.dates[i].logdate;
          let k=""
+         let b=""
          let idx=0
           while(this.dateData[idx]!='T'){
             k=k+this.dateData[idx]
             idx=idx+1;
           }
-          //console.log(k)
+          idx=idx+1
+          while(this.dateData[idx]!='.'){
+              b=b+this.dateData[idx]
+              idx=idx+1;
+          }
+         //console.log(b)
         //console.log(k.slice(5,7))
           let n=k.slice(8,10)
           let s=this.username1.slice(8,10)
           let e=this.username.slice(8,10)
           if(Number(n)>=Number(s) && Number(n)<=Number(e)){
-            this.dates[i].logdate=k
+            this.dates[i].logdate=k+" " + b
             this.vals.push(this.dates[i])
           }
       }
 
-      console.log(this.vals)
+      //console.log(this.vals)
         if(this.vals.length==0)
         {
           this.stus=false

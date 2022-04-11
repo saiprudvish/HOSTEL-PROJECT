@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { UserdetailsComponent } from './userdetails/userdetails.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { DaterangedetailsComponent } from './daterangedetails/daterangedetails.component';
-
+import {NgChartsModule} from 'ng2-charts';
 @NgModule({
   declarations: [
     NewadminComponent,
@@ -28,6 +28,7 @@ import { DaterangedetailsComponent } from './daterangedetails/daterangedetails.c
     CommonModule,
     NgxPaginationModule,
     FormsModule,
+    NgChartsModule,
     NewadminRoutingModule
   ]
 })

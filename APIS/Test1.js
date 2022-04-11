@@ -13,6 +13,7 @@ const pool =createPool({
     user:"root",
     password:"sai1234",
     database:"HOSTELPROJECT",
+    timezone: 'Z',
     connectionLimit:10
 
 })
@@ -66,7 +67,7 @@ pool.query('select * from info,dashboard inner join log on dashboard.bid=log.bid
     if(err){
         return console.log(err);
     }
-    //console.log(result)
+   // console.log(result)
     userApi.get("/dasho", (req, res) => {
     
         res.send({result})
@@ -105,7 +106,7 @@ userApi.get("/getval",  (req, res, next) => {
        console.log(result[0]);
         
             res.send({result})
-           console.log(result)
+           //console.log(result)
     })
    
 });

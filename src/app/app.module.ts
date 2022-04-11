@@ -5,15 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
-import { InComponent } from './in/in.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { NgApexchartsModule } from "ng-apexcharts";
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    InComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,

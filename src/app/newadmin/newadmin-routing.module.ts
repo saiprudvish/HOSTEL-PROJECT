@@ -14,7 +14,6 @@ const routes: Routes = [{ path: '', component: NewadminComponent ,children:[
 
   {path:'dashboard',component:DashboardComponent,children:[
     
-   
     {path:'in',component:InComponent},
      
     {path:'range',component:DaterangedetailsComponent},
