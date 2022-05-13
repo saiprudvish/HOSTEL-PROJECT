@@ -1,9 +1,5 @@
-<h1 class="student text-center mt-5">STUDENTS DATA<i class="fa-solid fa-user-group text-danger"></i></h1>
-
-
-
-
-<input type="text" name="rno" placeholder="Search by rno" class="form-control mx-5 mt-5 w-25" [(ngModel)]="searchTerm" >
+<h1 class="student text-center mt-5" >STUDENTS DATA<i class="fa-solid fa-user-group text-danger"></i></h1>
+<input type="text" name="rno" placeholder="Search by rno" class="form-control mt-2 w-25" [(ngModel)]="searchTerm" >
  <table class="table text-dark  mt-5 " >
     <div class="background w-75 d-block mx-auto">
     <table class="table table-striped text-dark  p-5 backc" >
@@ -18,20 +14,21 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let p of users | search:searchTerm">
-                <td  routerLink="{{p.bid}}"  class="id1"  > <strong>{{p.rno}}</strong></td>
-                <td> <strong>{{p.studentname}}</strong></td>
-                <td> <strong>{{p.year}}</strong></td>
-                <td> <strong>{{p.branch}}</strong></td>
-                <td> <strong>{{p.gender}}</strong></td>
-                <td> <strong>{{p.room_no}}</strong></td>  
+            <tr *ngFor="let d of users | search:searchTerm | paginate: 
+            { itemsPerPage: 5, currentPage: p }">
+                <td  routerLink="{{d.bid}}"  class="id1"  > <strong>{{d.rno}}</strong></td>
+                <td> <strong>{{d.studentname}}</strong></td>
+                <td> <strong>{{d.year}}</strong></td>
+                <td> <strong>{{d.branch}}</strong></td>
+                <td> <strong>{{d.gender}}</strong></td>
+                <td> <strong>{{d.room_no}}</strong></td>  
                 </tr>      
+                <pagination-controls (pageChange)="p = $event" class="float-right"></pagination-controls>
             </tbody>
             </table>
         
             </div>
 </table> 
-
 
 
 

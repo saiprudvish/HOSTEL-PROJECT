@@ -9,13 +9,14 @@ import { UserdetailsComponent } from './userdetails/userdetails.component';
 import { DaterangedetailsComponent } from './daterangedetails/daterangedetails.component';
 
 const routes: Routes = [{ path: '', component: NewadminComponent ,children:[
+  { path: '', component: DashboardComponent},
   {path:'data',component:StudentdataComponent},
   {path:'data/:bid',component:UserdetailsComponent},
 
   {path:'dashboard',component:DashboardComponent,children:[
-    
+    {path:'data',component:StudentdataComponent},
     {path:'in',component:InComponent},
-     
+    {path:'data/:bid',component:UserdetailsComponent},
     {path:'range',component:DaterangedetailsComponent},
     {path:'out',component:OutComponent},
     {path:'in/:bid',component:UserdetailsComponent},

@@ -9,6 +9,8 @@ import { DataService } from '../data.service';
 export class DaterangedetailsComponent implements OnInit {
 
 
+  searchTerm:any;
+  d:any;
   dates:any;
 stas:boolean=true;
 vals:any=[];

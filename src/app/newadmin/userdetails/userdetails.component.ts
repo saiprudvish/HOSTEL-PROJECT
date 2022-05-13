@@ -11,8 +11,9 @@ import { DataService } from '../data.service';
 export class UserdetailsComponent implements OnInit {
 
 
-  Obj:any;
-  
+  dates:any;
+  dateData:any=[];
+  vals:any=[];
 
   constructor(private fs:DataService,private ar:ActivatedRoute) { }
 
@@ -31,9 +32,30 @@ export class UserdetailsComponent implements OnInit {
         this.fs.getusersData(url).subscribe(
           obj=>{
       
-            this.Obj=obj.result;
-           // console.log(this.Obj)
-
+            this.dates=obj.result;
+            //console.log(this.dates)
+           for(let i in this.dates){
+            this.dateData=this.dates[i].logdate;
+            let k=""
+            let b=""
+            let idx=0
+             while(this.dateData[idx]!='T'){
+               k=k+this.dateData[idx]
+               idx=idx+1;
+             }
+             idx=idx+1
+             while(this.dateData[idx]!='.'){
+                 b=b+this.dateData[idx]
+                 idx=idx+1;
+             }
+            //console.log(b)
+           //console.log(k.slice(5,7))
+             let n=k.slice(8,10)
+     
+               this.dates[i].logdate=k +" " + " " +" " +  b;
+               this.vals.push(this.dates[i])
+             
+         }
 
           },
           err=>{

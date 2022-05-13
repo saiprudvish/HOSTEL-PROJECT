@@ -13,21 +13,32 @@
 <div>
 
 
-<div class="mt-5">
-  <div>
-    <h1 class="text-dark d-inline"> TOTAL STUDENTS     <img src="https://www.pngitem.com/pimgs/m/81-815572_student-university-college-cartoon-clip-art-college-students.png" alt="" width="35px">   <span class="text-warning">{{cnt}}</span>   </h1>
- 
-  </div>
-  <div >
-    <h1 class="text-dark d-inline">  STUDENTS  IN    <img src="https://www.pngitem.com/pimgs/m/81-815572_student-university-college-cartoon-clip-art-college-students.png" alt="" width="35px">  <span class="text-warning">{{incnt}}</span>   </h1>
- 
-  </div>
-  <div >
-    <h1 class="text-dark d-inline"> STUDENTS  OUT     <img src="https://www.pngitem.com/pimgs/m/81-815572_student-university-college-cartoon-clip-art-college-students.png" alt="" width="35px"> <span class="text-warning">{{outcnt}}</span>   </h1>
- 
-  </div>
 
-</div>
+  <div>
+    <table   class="table text-dark  mt-5 " >
+      <div class="background w-25 ">
+      <table class="table table-striped text-dark mx-5 p-5 backc" >
+          <thead>
+              <tr>
+                 <th  ><button  routerLink="data"  class="btn btn-sm btn-danger " >  TOTAL STUDENTS  </button></th>
+                  <th  > <button   routerLink="in" class="btn btn-sm btn-danger ">  STUDENTS IN </button></th>
+                  <th ><button  routerLink="out"  class="btn btn-sm btn-danger ">  STUDENTS OUT </button></th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr class=" text-dark " >
+                <td class="text-center"> <strong>{{cnt}}</strong></td>
+                  <td  class="text-center" > <strong>{{array[0].a}}</strong></td>
+                  <td  class="text-center" > <strong>{{array[1].a}}</strong></td>
+                
+                  </tr>      
+              </tbody>
+              </table>
+          
+              </div>
+    </table> 
+    
+    </div>
 
   
 

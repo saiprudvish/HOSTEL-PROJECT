@@ -9,7 +9,10 @@
 
 <table  *ngIf="!stas"  class="table text-dark  mt-5 " >
     <div class="background w-75 d-block mx-auto">
-   <h1 *ngIf="!stus" class="text-danger">NO DATA</h1>
+        <h1 *ngIf="username.length==0 || username1.length==0" class="text-danger">ENTER DATE FIRST</h1>
+   <h1 *ngIf="!stus && username.length!=0 " class="text-danger">NO DATA</h1>
+    
+   <input type="text" name="rno" placeholder="Search by rno" class="form-control mt-2 w-25" [(ngModel)]="searchTerm" >
     <table   *ngIf="stus" class="table table-striped text-dark  p-5 backc" >
         <thead>
             <tr>
@@ -27,7 +30,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let p of vals">
+            <tr *ngFor="let p of vals | search:searchTerm | paginate: 
+            { itemsPerPage: 5, currentPage: d }">
                 <td > <strong>{{p.rno}}</strong></td>
                 <td> <strong>{{p.studentname}}</strong></td>
                 <td> <strong>{{p.year}}</strong></td>
@@ -38,6 +42,7 @@
                 <td><strong>{{p.C1}}</strong></td>
                 <td><strong>{{p.bid}}</strong></td>
                 </tr>      
+                <pagination-controls (pageChange)="d = $event" class="float-right"></pagination-controls>
             </tbody>
             </table>
         

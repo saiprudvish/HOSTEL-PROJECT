@@ -103,6 +103,8 @@ userApi.get("/getval",  (req, res, next) => {
         if(err){
             return console.log(err);
         }
+
+        
        console.log(result[0]);
         
             res.send({result})
@@ -110,6 +112,24 @@ userApi.get("/getval",  (req, res, next) => {
     })
    
 });
+
+
+userApi.get("/getcnt",  (req, res, next) => {
+
+    // console.log(selectedid);
+     pool.query(' select count(*) as a from info,dashboard inner join log on dashboard.bid=log.bid and dashboard.logdate=log.login where dashboard.C1="in"  and info.bid=dashboard.bid union select count(*) as a from info,dashboard inner join log on dashboard.bid=log.bid and dashboard.logdate=log.login where dashboard.C1="out"  and info.bid=dashboard.bid',(err,result,fields)=> {
+         if(err){
+             return console.log(err);
+         }
+ 
+         
+        console.log(result);
+         
+             res.send({result})
+            //console.log(result)
+     })
+    
+ });
 
 
 
