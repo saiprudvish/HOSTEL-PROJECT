@@ -11,6 +11,7 @@ import { DataService } from '../data.service';
 export class InComponent implements OnInit {
 
   users:any;
+  d:any;
   iddata:any;
   first:any;
   outs:any;

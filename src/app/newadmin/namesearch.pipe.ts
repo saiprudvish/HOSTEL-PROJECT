@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'search'
+  name: 'namesearch'
 })
-export class SearchPipe implements PipeTransform {
+export class NamesearchPipe implements PipeTransform {
 
   transform(students:any[],searchTerm:string):any[]{
     if(!students ||!searchTerm) {
@@ -11,12 +11,11 @@ export class SearchPipe implements PipeTransform {
    
     }
     else{
-      return students.filter( studentsObj=>(studentsObj.rno.toLowerCase().indexOf(searchTerm.toLowerCase())!==-1) )
+      return students.filter(studentsObj=>studentsObj.rno.toLowerCase().indexOf(searchTerm.toLowerCase())!==-1)
       
     }
 
   
   }
-  
-  }
 
+}

@@ -123,7 +123,7 @@ userApi.get("/getcnt",  (req, res, next) => {
          }
  
          
-        console.log(result);
+        //console.log(result);
          
              res.send({result})
             //console.log(result)

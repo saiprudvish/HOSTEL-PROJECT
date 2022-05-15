@@ -10,7 +10,7 @@ import { DataService } from '../data.service';
 })
 export class UserdetailsComponent implements OnInit {
 
-
+  d:any;
   dates:any;
   dateData:any=[];
   vals:any=[];
@@ -28,7 +28,7 @@ export class UserdetailsComponent implements OnInit {
  // console.log(url);
 
     
-        //get data of movie with this current id
+        //get data of student with this current id
         this.fs.getusersData(url).subscribe(
           obj=>{
       

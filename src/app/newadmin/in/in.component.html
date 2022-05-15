@@ -17,7 +17,8 @@
         <tbody>
 
             
-            <tr *ngFor="let p of users | search:searchTerm">
+            <tr *ngFor="let p of users | search:searchTerm  | paginate: 
+            { itemsPerPage: 5, currentPage: d }">
                 <td  routerLink="{{p.bid}}" class="id1"  >  <strong>{{p.rno}}</strong></td>
                 <td> <strong>{{p.studentname}}</strong></td>
                 <td> <strong>{{p.year}}</strong></td>
@@ -25,7 +26,8 @@
                 <td> <strong>{{p.gender}}</strong></td>
                 <td> <strong>{{p.room_no}}</strong></td>  
                 <td >  <strong>{{p.bid}}</strong></td>
-                </tr>      
+                </tr>
+                <pagination-controls (pageChange)="d = $event" class="float-right"></pagination-controls>      
             </tbody>
             </table>
         

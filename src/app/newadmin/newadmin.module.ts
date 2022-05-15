@@ -13,6 +13,7 @@ import { UserdetailsComponent } from './userdetails/userdetails.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { DaterangedetailsComponent } from './daterangedetails/daterangedetails.component';
 import {NgChartsModule} from 'ng2-charts';
+import { NamesearchPipe } from './namesearch.pipe';
 @NgModule({
   declarations: [
     NewadminComponent,
@@ -22,7 +23,8 @@ import {NgChartsModule} from 'ng2-charts';
     OutComponent,
     SearchPipe,
     UserdetailsComponent,
-    DaterangedetailsComponent
+    DaterangedetailsComponent,
+    NamesearchPipe
   ],
   imports: [
     CommonModule,

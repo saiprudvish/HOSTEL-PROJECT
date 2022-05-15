@@ -12,7 +12,7 @@
         <h1 *ngIf="username.length==0 || username1.length==0" class="text-danger">ENTER DATE FIRST</h1>
    <h1 *ngIf="!stus && username.length!=0 " class="text-danger">NO DATA</h1>
     
-   <input type="text" name="rno" placeholder="Search by rno" class="form-control mt-2 w-25" [(ngModel)]="searchTerm" >
+   
     <table   *ngIf="stus" class="table table-striped text-dark  p-5 backc" >
         <thead>
             <tr>

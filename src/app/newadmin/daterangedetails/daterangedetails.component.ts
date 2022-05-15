@@ -44,11 +44,13 @@ this.stas=false
               b=b+this.dateData[idx]
               idx=idx+1;
           }
-         //console.log(b)
-        //console.log(k.slice(5,7))
+       
+        //console.log(k)
           let n=k.slice(8,10)
+          //console.log(this.username)
           let s=this.username1.slice(8,10)
           let e=this.username.slice(8,10)
+        //console.log(e)
           if(Number(n)>=Number(s) && Number(n)<=Number(e)){
             this.dates[i].logdate=k+" " + b
             this.vals.push(this.dates[i])

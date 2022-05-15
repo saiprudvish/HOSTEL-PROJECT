@@ -7,7 +7,8 @@ import { DataService } from '../data.service';
   styleUrls: ['./out.component.css']
 })
 export class OutComponent implements OnInit {
-
+ 
+  d:any;
   users:any;
   searchTerm:any;
   constructor(private userObj:DataService) { }
