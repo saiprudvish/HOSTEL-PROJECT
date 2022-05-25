@@ -1,3 +1,12 @@
+<div class="d-inline mt-5"> 
+
+    <h5 class="text-dark d-inline ms-5 mt-5 ">FROM</h5>
+    <input  type="date" class="mx-5 mt-5" id="username1" name="username1"  [(ngModel)]="username1">
+    <h5 class="text-dark d-inline mt-5">TO</h5>
+<input type="date" class="mx-5 mt-5"  id="username" name="username" [(ngModel)]="username">
+<button  type="submit" class="btn btn-danger data"  (click)="getData()" >Get Data</button>
+</div>
+
 
 <h1 class="text-dark text-center">({{vals[0].rno}})   -  {{vals[0].studentname}} ({{vals[0].rno}}) </h1>
 <table class="table text-dark  mt-5 " >
@@ -17,7 +26,7 @@
                 
             </tr>
         </thead>
-        <tbody>
+        <tbody  *ngIf="satus">
             <tr *ngFor="let p of vals  | paginate: 
             { itemsPerPage: 5, currentPage: d }">
                 <td > <strong>{{p.rno}}</strong></td>
@@ -32,6 +41,25 @@
                 </tr>      
                 <pagination-controls (pageChange)="d = $event" class="float-right"></pagination-controls>
             </tbody>
+  
+
+
+            <tbody  *ngIf="!satus">
+                <tr *ngFor="let p of laas  | paginate: 
+                { itemsPerPage: 5, currentPage: d }">
+                    <td > <strong>{{p.rno}}</strong></td>
+                    <td> <strong>{{p.studentname}}</strong></td>
+                    <td> <strong>{{p.year}}</strong></td>
+                    <td> <strong>{{p.branch}}</strong></td>
+                    <td> <strong>{{p.gender}}</strong></td>
+                    <td> <strong>{{p.room_no}}</strong></td>  
+                    <td><strong>{{p.logdate}}</strong></td>
+                    <td><strong>{{p.C1}}</strong></td>
+                    <td><strong>{{p.bid}}</strong></td>
+                    </tr>      
+                    <pagination-controls (pageChange)="d = $event" class="float-right"></pagination-controls>
+                </tbody>
+
             </table>
         
             </div>

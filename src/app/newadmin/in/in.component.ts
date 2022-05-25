@@ -11,6 +11,11 @@ import { DataService } from '../data.service';
 export class InComponent implements OnInit {
 
   users:any;
+  dates:any;
+vals:any=[];
+  dateData:any=[];
+  username: string = '';
+  username1: string = '';
   d:any;
   iddata:any;
   first:any;
@@ -54,7 +59,6 @@ export class InComponent implements OnInit {
 // onSelectid(bid:any){
 //    this.ar.navigateByUrl('in/'+bid)
 // }
-
 
 
 

@@ -19,9 +19,13 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
       
   }
-
+ onpass(){
+   alert("Do you want to change password / click ok ?")
+   
+ }
 logInUser(){
-  if(this.username=="admin" && this.password=="admin"){
+  
+  if(this.username=="admin" && localStorage.getItem("password")==this.password){
     
     alert("Login Success");
     localStorage.setItem("username",this.username);

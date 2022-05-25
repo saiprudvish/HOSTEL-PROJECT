@@ -3,7 +3,9 @@ const exp=require("express")
 const userApi=exp.Router();
 //add body parser middleware
 userApi.use(exp.json())
-
+const nodemailer=require("nodemailer")
+//const { response, json } = require('express');
+const bcrypt = require('bcrypt');
 
 const { 
     createPool
@@ -96,6 +98,24 @@ userApi.get("/getuser/:id",  (req, res, next) => {
 });
 
 
+userApi.get("/getindate/:id",  (req, res, next) => {
+
+
+  let selectedid = req.params.id;
+ // console.log(selectedid);
+  pool.query('select * from info,dashboard inner join log on dashboard.bid=log.bid and dashboard.logdate=log.login where dashboard.C1="in"  and info.bid=dashboard.bid and info.bid=  '+selectedid+'   ',(err,result,fields)=> {
+      if(err){
+          return console.log(err);
+      }
+     //console.log(result[0]);
+      
+          res.send({result})
+         
+  })
+ 
+});
+
+
 userApi.get("/getval",  (req, res, next) => {
 
    // console.log(selectedid);
@@ -130,8 +150,55 @@ userApi.get("/getcnt",  (req, res, next) => {
      })
     
  });
+ 
 
 
+
+  //*********
+    //nodemailer
+
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: process.env.MAILUSERNAME,
+          pass: process.env.MAILPASSWORD
+        }
+      });
+      //function for sending  new  login details to user through registered mail
+      function mail(to,id,pass,accnum){
+      var mailOptions = {
+        from: 'narcosbank21@gmail.com',
+        to: `${to}`,
+        subject: 'New account login details',
+        text: `Welcome to VNR HOSTELS .Your new login details are \n user Id : ${id} \n Password : ${pass} \n Account Number :${accnum} \n Please note your password.`
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          return error;
+        } else {
+          return 'Email sent';
+        }
+      });
+      }
+
+      //fuction for sending new password to admin through registered mail
+      function newPassmail(to,pass){
+        var mailOptions = {
+          from: '',
+          to: `${to}`,
+          subject: 'New Password',
+          text: `Your new password is ${pass}. \n Please change your password after successfull login. `
+        };
+        
+        transporter.sendMail(mailOptions, function(error, info){
+          if (error) {
+            return error;
+          } else {
+            return 'Email sent';
+          }
+        });
+    }
 
 
 

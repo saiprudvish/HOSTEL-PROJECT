@@ -29,7 +29,7 @@
                 
             </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="cnt==2">
             <tr *ngFor="let p of vals | search:searchTerm | paginate: 
             { itemsPerPage: 5, currentPage: d }">
                 <td > <strong>{{p.rno}}</strong></td>
@@ -44,6 +44,21 @@
                 </tr>      
                 <pagination-controls (pageChange)="d = $event" class="float-right"></pagination-controls>
             </tbody>
+            <tbody *ngIf="cnt>2">
+                <tr *ngFor="let p of dups | search:searchTerm | paginate: 
+                { itemsPerPage: 5, currentPage: d }">
+                    <td > <strong>{{p.rno}}</strong></td>
+                    <td> <strong>{{p.studentname}}</strong></td>
+                    <td> <strong>{{p.year}}</strong></td>
+                    <td> <strong>{{p.branch}}</strong></td>
+                    <td> <strong>{{p.gender}}</strong></td>
+                    <td> <strong>{{p.room_no}}</strong></td>  
+                    <td><strong>{{p.logdate}}</strong></td>
+                    <td><strong>{{p.C1}}</strong></td>
+                    <td><strong>{{p.bid}}</strong></td>
+                    </tr>      
+                    <pagination-controls (pageChange)="d = $event" class="float-right"></pagination-controls>
+                </tbody>
             </table>
         
             </div>

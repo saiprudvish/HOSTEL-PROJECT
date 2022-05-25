@@ -1,10 +1,9 @@
 
-<h1 class="student text-center mt-5" >IN STUDENTS DATA<i class="fa-solid fa-user-group text-danger"></i></h1>
-<input type="text" name="rno" placeholder="Search by rno" class="form-control mt-2 w-25" [(ngModel)]="searchTerm" >
 
- <table class="table text-dark  mt-5 " >
+
+<h1 class="text-dark text-center">({{vals[0].rno}})   -  {{vals[0].studentname}} ({{vals[0].rno}}) </h1>
+<table class="table text-dark  mt-5 " >
     <div class="background w-75 d-block mx-auto">
-     
     <table class="table table-striped text-dark  p-5 backc" >
         <thead>
             <tr>
@@ -14,23 +13,26 @@
                 <th>BRANCH</th>
                 <th>GENDER</th>
                 <th>ROOM NUMBER</th>
-                <th>Biometric Id</th>
+              <th>  <span class="ms-3 me-5">  DATE  </span >   TIME</th>
+                <th>IN/OUT</th>
+                <th>bid</th>
+                
             </tr>
         </thead>
         <tbody>
-
-            
-            <tr *ngFor="let p of users | search:searchTerm  | paginate: 
+            <tr *ngFor="let p of vals  | paginate: 
             { itemsPerPage: 5, currentPage: d }">
-                <td  routerLink="{{p.bid}}" class="id1"  >  <strong>{{p.rno}}</strong></td>
+                <td > <strong>{{p.rno}}</strong></td>
                 <td> <strong>{{p.studentname}}</strong></td>
                 <td> <strong>{{p.year}}</strong></td>
                 <td> <strong>{{p.branch}}</strong></td>
                 <td> <strong>{{p.gender}}</strong></td>
                 <td> <strong>{{p.room_no}}</strong></td>  
-                <td >  <strong>{{p.bid}}</strong></td>
-                </tr>
-                <pagination-controls (pageChange)="d = $event" class="float-right"></pagination-controls>      
+                <td><strong>{{p.logdate}}</strong></td>
+                <td><strong>{{p.C1}}</strong></td>
+                <td><strong>{{p.bid}}</strong></td>
+                </tr>      
+                <pagination-controls (pageChange)="d = $event" class="float-right"></pagination-controls>
             </tbody>
             </table>
         

@@ -1,35 +1,55 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../data.service';
 
 @Component({
-  selector: 'app-daterangedetails',
-  templateUrl: './daterangedetails.component.html',
-  styleUrls: ['./daterangedetails.component.css']
+  selector: 'app-indaterange',
+  templateUrl: './indaterange.component.html',
+  styleUrls: ['./indaterange.component.css']
 })
-export class DaterangedetailsComponent implements OnInit {
+export class IndaterangeComponent implements OnInit {
 
-
-  searchTerm:any;
-  d:any;
-  dates:any;
-stas:boolean=true;
-vals:any=[];
-dups:any=[];
-  dateData:any=[];
+  stas:boolean=true;
   username: string = '';
   username1: string = '';
-  constructor(private userObj:DataService) { }
+  d:any;
+  dates:any;
+  dateData:any=[];
+  vals:any=[];
+  constructor(private userObj:DataService,private ar:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
+    
+
+    this.router.navigate(['path/to'])
+    .then(() => {
+      window.location.reload();
+    });
+
+    var url = this.ar.snapshot.paramMap.get('bid')
+    // console.log(url);
+   
+       
+           //get data of student with this current id
+           this.userObj.getusersDatabyindate(url).subscribe(
+             obj=>{
+         
+               this.dates=obj.result;
+               console.log(this.dates)
+              },
+              err=>{
+                console.log("err in reading movie",err)
+              }
+            )
   }
 
-  check:boolean=true;
+
+
+
   stus:boolean=true
-  cnt:number=1;
   getData(){
+
 this.stas=false
-this.cnt=this.cnt+1;
-this.check=!this.check
     this.userObj.getdate().subscribe((userData:any)=>{
       this.dates=userData.result;
       //console.log(this.dates)
@@ -56,13 +76,7 @@ this.check=!this.check
         //console.log(e)
           if(Number(n)>=Number(s) && Number(n)<=Number(e)){
             this.dates[i].logdate=k+" " + b
-            if(this.cnt==2){
             this.vals.push(this.dates[i])
-            }
-            else if(this.cnt>3){
-              this.dups=this.vals
-            }
-       
           }
       }
 
@@ -80,6 +94,5 @@ this.check=!this.check
     //console.log(this.username1)
     //console.log(this.username)
   }
-
 
 }

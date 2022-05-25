@@ -14,8 +14,9 @@ const routes: Routes = [{ path: '', component: NewadminComponent ,children:[
   {path:'data/:bid',component:UserdetailsComponent},
 
   {path:'dashboard',component:DashboardComponent,children:[
-    {path:'data',component:StudentdataComponent},
     {path:'in',component:InComponent},
+    {path:'data',component:StudentdataComponent},
+ 
     {path:'data/:bid',component:UserdetailsComponent},
     {path:'range',component:DaterangedetailsComponent},
     {path:'out',component:OutComponent},
