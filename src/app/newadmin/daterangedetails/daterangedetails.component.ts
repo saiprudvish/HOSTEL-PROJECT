@@ -48,18 +48,19 @@ this.check=!this.check
               idx=idx+1;
           }
        
-        //console.log(k)
+        console.log(k)
           let n=k.slice(8,10)
-          //console.log(this.username)
+          console.log(this.username)
           let s=this.username1.slice(8,10)
           let e=this.username.slice(8,10)
-        //console.log(e)
+        console.log(e)
           if(Number(n)>=Number(s) && Number(n)<=Number(e)){
             this.dates[i].logdate=k+" " + b
             if(this.cnt==2){
             this.vals.push(this.dates[i])
             }
-            else if(this.cnt>3){
+            else if(this.cnt>2){
+             
               this.dups=this.vals
             }
        

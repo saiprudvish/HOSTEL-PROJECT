@@ -125,7 +125,7 @@ userApi.get("/getval",  (req, res, next) => {
         }
 
         
-       console.log(result[0]);
+      // console.log(result[0]);
         
             res.send({result})
            //console.log(result)

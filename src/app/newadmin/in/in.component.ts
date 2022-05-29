@@ -25,9 +25,15 @@ vals:any=[];
   }
 
   ngOnInit(): void {
+
     this.userObj.getdash().subscribe((userData:any)=>{
-      this.users=userData.result;
-       // console.log(this.users.logdate)
+      this.userObj.updateDataObservable(userData.result)
+      this.userObj.dataObservable.subscribe(prodObj=>{
+        this.users=prodObj;
+           console.log(this.users)
+     })
+     
+     
 
 
 
