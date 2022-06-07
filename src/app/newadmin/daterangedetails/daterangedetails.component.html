@@ -22,44 +22,30 @@
                 <th>BRANCH</th>
                 <th>GENDER</th>
                 <th>ROOM NUMBER</th>
-                <th>
-                    <span class="ms-3 me-5">  DATE  </span >   TIME</th>
+                <th>DATE</th>
+                <th>TIME</th>
+               
                 <th>IN/OUT</th>
                 <th>bid</th>
                 
             </tr>
         </thead>
-        <tbody *ngIf="cnt==2">
+        <tbody>
             <tr *ngFor="let p of vals | search:searchTerm | paginate: 
-            { itemsPerPage: 5, currentPage: d }">
-                <td > <strong>{{p.rno}}</strong></td>
+            { itemsPerPage: 15, currentPage: d }">
+                <td > <strong  routerLink="{{p.bid}}" >{{p.rno}}</strong></td>
                 <td> <strong>{{p.studentname}}</strong></td>
                 <td> <strong>{{p.year}}</strong></td>
                 <td> <strong>{{p.branch}}</strong></td>
                 <td> <strong>{{p.gender}}</strong></td>
                 <td> <strong>{{p.room_no}}</strong></td>  
-                <td><strong>{{p.logdate}}</strong></td>
+                <td><strong>{{p.logdate.slice(0,10)}}</strong></td>
+                <td><strong>{{p.logdate.slice(11,19)}}</strong></td>
                 <td><strong>{{p.C1}}</strong></td>
-                <td><strong>{{p.bid}}</strong></td>
+                <td><strong  >{{p.bid}}</strong></td>
                 </tr>      
                 <pagination-controls (pageChange)="d = $event" class="float-right"></pagination-controls>
             </tbody>
-            <tbody *ngIf="cnt>2">
-                <tr *ngFor="let p of dups | search:searchTerm | paginate: 
-                { itemsPerPage: 5, currentPage: d }">
-                    <td > <strong>{{p.rno}}</strong></td>
-                    <td> <strong>{{p.studentname}}</strong></td>
-                    <td> <strong>{{p.year}}</strong></td>
-                    <td> <strong>{{p.branch}}</strong></td>
-                    <td> <strong>{{p.gender}}</strong></td>
-                    <td> <strong>{{p.room_no}}</strong></td>  
-                    <td><strong>{{p.logdate}}</strong></td>
-                    <td><strong>{{p.C1}}</strong></td>
-                    <td><strong>{{p.bid}}</strong></td>
-                    </tr>      
-                    <pagination-controls (pageChange)="d = $event" class="float-right"></pagination-controls>
-                </tbody>
-            </table>
+         
         
-            </div>
 </table> 

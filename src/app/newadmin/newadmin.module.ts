@@ -14,7 +14,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { DaterangedetailsComponent } from './daterangedetails/daterangedetails.component';
 import {NgChartsModule} from 'ng2-charts';
 import { NamesearchPipe } from './namesearch.pipe';
-import { IndaterangeComponent } from './indaterange/indaterange.component';
+
 @NgModule({
   declarations: [
     NewadminComponent,
@@ -25,8 +25,7 @@ import { IndaterangeComponent } from './indaterange/indaterange.component';
     SearchPipe,
     UserdetailsComponent,
     DaterangedetailsComponent,
-    NamesearchPipe,
-    IndaterangeComponent,
+    NamesearchPipe
   ],
   imports: [
     CommonModule,

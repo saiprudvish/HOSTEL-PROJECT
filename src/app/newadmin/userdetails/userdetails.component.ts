@@ -14,10 +14,11 @@ export class UserdetailsComponent implements OnInit {
 
 
  
-
+   dateobj:any;
   satus:boolean=true;
   duts:any;
-
+   date:any;
+   time:any;
   laas:any=[];
     datData:any=[];
   username: string = '';
@@ -27,6 +28,7 @@ export class UserdetailsComponent implements OnInit {
   dateData:any=[];
   vals:any=[];
 
+  page:any;
   constructor(private userObj:DataService,private ar:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -43,31 +45,8 @@ export class UserdetailsComponent implements OnInit {
         //get data of student with this current id
         this.userObj.getusersData(url).subscribe(
           obj=>{
-      
-            this.dates=obj.result;
-            //console.log(this.dates)
-           for(let i in this.dates){
-            this.dateData=this.dates[i].logdate;
-            let k=""
-            let b=""
-            let idx=0
-             while(this.dateData[idx]!='T'){
-               k=k+this.dateData[idx]
-               idx=idx+1;
-             }
-             idx=idx+1
-             while(this.dateData[idx]!='.'){
-                 b=b+this.dateData[idx]
-                 idx=idx+1;
-             }
-            //console.log(b)
-           //console.log(k.slice(5,7))
-             let n=k.slice(8,10)
-     
-               this.dates[i].logdate=k +" " + " " +" " +  b;
-               this.vals.push(this.dates[i])
-             
-         }
+      this.vals=obj.result
+           
 
           },
           err=>{
@@ -87,44 +66,32 @@ export class UserdetailsComponent implements OnInit {
 getData(){
     this.satus=false;
          
-    var url = this.ar.snapshot.paramMap.get('bid')
-this.userObj.getusersDatabyindate(url).subscribe((userData:any)=>{
-  this.duts=userData.result;
-  //console.log(this.dates)
-  for(let i in this.dates){
-     this.datData=this.duts[i].logdate;
-     let k=""
-     let b=""
-     let idx=0
-      while(this.datData[idx]!='T'){
-        k=k+this.datData[idx]
-        idx=idx+1;
-      }
-      idx=idx+1
-      while(this.datData[idx]!='.'){
-          b=b+this.datData[idx]
-          idx=idx+1;
-      }
+
    
-    //console.log(k)
-      let n=k.slice(8,10)
-      //console.log(this.username)
-      let s=this.username1.slice(8,10)
-      let e=this.username.slice(8,10)
-    //console.log(e)
-      if(Number(n)>=Number(s) && Number(n)<=Number(e)){
-        this.duts[i].logdate=k+" " + b
-        this.laas.push(this.duts[i])
+    var url = this.ar.snapshot.paramMap.get('bid')
+    this.userObj.getusersData(url).subscribe(
+      obj=>{
+          this.vals=obj.result
+
+          this.dateobj = {
+            d1:this.username,
+            d2:this.username1,
+            data:url
+            };
+            this.userObj.getindate(this.dateobj).subscribe( 
+              obj=>{
+                   this.vals=obj.results
+                    
+              },
+              err=>{
+                console.log("err in reading movie",err)
+              }
+            )
+      },
+      err=>{
+        console.log("err in reading movie",err)
       }
-  }
-
-
-},
-err=>{
-  console.log("err in getting info data",err)
-}
-
-)
+    )
 //console.log(this.username1)
 //console.log(this.username)
 }

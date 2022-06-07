@@ -1,5 +1,16 @@
 <h1 class="student text-center mt-5" >STUDENTS DATA<i class="fa-solid fa-user-group text-danger"></i></h1>
-<input type="text" name="rno" placeholder="Search student" class="form-control mt-2 mx-5 w-25"  [(ngModel)]="searchrno" >
+<div class="row">
+<div class="col-8">
+    <input type="text" name="rno" placeholder="Search student" class="form-control mt-2 mx-5 w-25"  [(ngModel)]="searchrno" >
+</div>
+
+  <div>
+
+  </div>
+</div>
+
+    
+
  <table class="table text-dark  mt-5 " >
     <div class="background w-75 d-block mx-auto">
     <table class="table table-striped text-dark  p-5 backc" >
@@ -13,6 +24,7 @@
                 <th>ROOM NUMBER</th>
             </tr>
         </thead>
+
         <tbody>
             <tr *ngFor="let d of users |namesearch:searchrno | paginate: 
             { itemsPerPage: 10 , currentPage: p }">
@@ -24,9 +36,10 @@
                 <td> <strong>{{d.room_no}}</strong></td>  
                 </tr>      
                 <pagination-controls (pageChange)="p = $event" class="float-right"></pagination-controls>
+              
             </tbody>
             </table>
-        
+         
             </div>
 </table> 
 

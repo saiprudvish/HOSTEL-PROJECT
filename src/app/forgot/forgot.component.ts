@@ -19,13 +19,13 @@ export class ForgotComponent implements OnInit {
       
   }
 
-logInUser(){
-  if(this.username=="19071A3248"){
+  ResetPassword(){
+  if(this.username=="VNRHOSTEL"){
     
     alert("password changed");
     localStorage.setItem("password",this.password);
     this.router.navigateByUrl('/login');
-    console.log("Welcome to the dashboard");
+    //console.log("Welcome to the dashboard");
     this.status=true;
   }
   else{

@@ -14,15 +14,27 @@ export class OutComponent implements OnInit {
   constructor(private userObj:DataService) { }
 
   ngOnInit(): void {
-    this.userObj.getdasho().subscribe((userData:any)=>{
-      this.users=userData.result;
-        //console.log(this.users)
+   
+    this.userObj.getdash().subscribe((userData:any)=>{
+      this.userObj.updateDataObservable(userData.result)
+      this.userObj.dataObservable.subscribe(prodObj=>{
+        this.users=prodObj;
+           //console.log(this.users)
+     })
+     
+     
+
+
+
+
   },
     err=>{
       console.log("err in getting info data",err)
     }
+
   )
-  }
+  
+}
   status:boolean=true
   getdata(){
       this.status=false

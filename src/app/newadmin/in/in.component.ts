@@ -30,7 +30,7 @@ vals:any=[];
       this.userObj.updateDataObservable(userData.result)
       this.userObj.dataObservable.subscribe(prodObj=>{
         this.users=prodObj;
-           console.log(this.users)
+           //console.log(this.users)
      })
      
      

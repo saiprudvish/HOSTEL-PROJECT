@@ -1,6 +1,7 @@
 //create mini express application
 const exp=require("express")
 const userApi=exp.Router();
+const expressErrorHandler = require("express-async-handler")
 //add body parser middleware
 userApi.use(exp.json())
 const nodemailer=require("nodemailer")
@@ -9,7 +10,8 @@ const bcrypt = require('bcrypt');
 
 const { 
     createPool
-}=require('mysql')
+}=require('mysql');
+const { stringify } = require("querystring");
 const pool =createPool({
     host:"localhost",
     user:"root",
@@ -97,6 +99,31 @@ userApi.get("/getuser/:id",  (req, res, next) => {
    
 });
 
+userApi.post("/getuserdetailsrange",  (req, res, next) => {
+
+
+  let obj = req.body;
+  let date1=obj.d2;
+  let date2=obj.d1;
+  let dataurl=obj.data;
+   console.log(obj);
+
+
+
+ pool.query('SELECT * FROM info natural join dashboard WHERE( date(dashboard.logdate) >= ? and date(dashboard.logdate) <= ? and info.bid = ? ) ', [date1,date2,dataurl],function(error, results, fields) {
+  // If there is an issue with the query, output the error
+  if (error) throw error;
+ 
+  else{
+   //console.log(results)
+    res.send({results})
+  }
+       
+  
+});
+ 
+});
+
 
 userApi.get("/getindate/:id",  (req, res, next) => {
 
@@ -151,6 +178,49 @@ userApi.get("/getcnt",  (req, res, next) => {
     
  });
  
+//  userApi.post("/getdaterange",  (req, res, next) => {
+
+//   // console.log(selectedid);
+//   let dateObj1=req.body.d1;
+//   let dateObj2=req.body.d2;
+//   //vals=[dateObj1,dateObj2];
+//   //console.log(dateObj1)
+  
+  
+//    pool.query('  select * from info NATURAL JOIN dashboard where date(dashboard.logdate) = ?  AND date(dashboard.logdate) = ? ', [dateObj1,dateObj2] ,function(err,results,feilds) {
+//        if(err){
+//            return console.log(err);
+//        }
+
+       
+//       //console.log(result);
+       
+//            res.send({results})
+//           console.log(results)
+//    })
+  
+// });
+
+
+
+userApi.post('/getdaterange', expressErrorHandler(async (req, res) => {
+	let od2 = req.body.d1;
+	let od1 = req.body.d2;
+	//console.log(od1)
+
+		// Execute SQL query that'll select the account from the database based on the specified username and d2
+		pool.query('SELECT * FROM info natural join dashboard WHERE( date(dashboard.logdate) >= ? and date(dashboard.logdate) <= ? ) ', [od1,od2],function(error, results, fields) {
+			// If there is an issue with the query, output the error
+			if (error) throw error;
+     
+			else{
+       // console.log(results)
+        res.send({results})
+      }
+           
+			
+		});
+}));
 
 
 

@@ -12,6 +12,11 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class StudentdataComponent implements OnInit {
 
+
+p1:any;
+p2:any;
+p3:any;
+  select:any;
 startIndex=0;
 endIndex=3;
 users:any;
@@ -31,14 +36,23 @@ p:any;
 
 
     this.userObj.getUser().subscribe((userData:any)=>{
-      this.users=userData.result;
-       // console.log(this.users)
+      this.userObj.updateDataObservable(userData.result)
+      this.userObj.dataObservable.subscribe(prodObj=>{
+        this.users=prodObj;
+           //console.log(this.users)
+     })
+     
+     
+
+
+
+
   },
     err=>{
       console.log("err in getting info data",err)
     }
-  
-  )
+
+  )}
   }
  
 
@@ -56,4 +70,4 @@ p:any;
 
 
 
-}
+
