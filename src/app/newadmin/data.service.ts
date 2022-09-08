@@ -19,22 +19,22 @@ export class DataService {
   constructor(private hc:HttpClient) { 
   }
   getUser():Observable<any>{
-    return this.hc.get<any>('/user/data')
+    return this.hc.get<any>('/user/StudentsData')
   }
   getdash():Observable<any>{
-    return this.hc.get<any>('/user/dash')
+    return this.hc.get<any>('/user/InStudentsData')
   }
   getdasho():Observable<any>{
-    return this.hc.get<any>('/user/dasho')
+    return this.hc.get<any>('/user/OutStudentsData')
   }
   getusersData(id:any):Observable<any>{
-    return this.hc.get(`/user/getuser/${id}`)
+    return this.hc.get(`/user/StudentHistorybyId/${id}`)
   }
   getusersDatabyindate(id:any):Observable<any>{
     return this.hc.get(`/user/getindate/${id}`)
   }
   getindate(obj:any):Observable<any>{
-    return this.hc.post<any>('/user/getuserdetailsrange',obj)
+    return this.hc.post<any>('/user/EachStudentHistoryWithDateRange',obj)
   }
   getdate():Observable<any>{
     return this.hc.get<any>('/user/getval')
@@ -43,6 +43,6 @@ export class DataService {
     return this.hc.get<any>('/user/getcnt')
   }
   getdaterange(dateobj:any):Observable<any>{
-    return this.hc.post<any>('/user/getdaterange',dateobj)
+    return this.hc.post<any>('/user/getdaterangeStudents',dateobj)
   }
 }

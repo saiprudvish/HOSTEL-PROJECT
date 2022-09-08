@@ -28,39 +28,25 @@ export class UserdetailsComponent implements OnInit {
   dateData:any=[];
   vals:any=[];
 
-  page:any;
+  page:any=8;
   constructor(private userObj:DataService,private ar:ActivatedRoute) { }
 
   ngOnInit(): void {
-
-
-  
-
         //get id from url
        
         var url = this.ar.snapshot.paramMap.get('bid')
  // console.log(url);
-
+    
     
         //get data of student with this current id
         this.userObj.getusersData(url).subscribe(
           obj=>{
       this.vals=obj.result
-           
-
           },
           err=>{
             console.log("err in reading movie",err)
           }
         )
-
-
-
-
-
-     
-
-
   }
  
 getData(){

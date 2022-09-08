@@ -15,7 +15,7 @@ export class OutComponent implements OnInit {
 
   ngOnInit(): void {
    
-    this.userObj.getdash().subscribe((userData:any)=>{
+    this.userObj.getdasho().subscribe((userData:any)=>{
       this.userObj.updateDataObservable(userData.result)
       this.userObj.dataObservable.subscribe(prodObj=>{
         this.users=prodObj;

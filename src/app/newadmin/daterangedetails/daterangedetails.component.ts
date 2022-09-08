@@ -23,8 +23,6 @@ dups:any=[];
 
   ngOnInit(): void {
   }
-
- 
   check:boolean=true;
   stus:boolean=true
   cnt:number=1;
