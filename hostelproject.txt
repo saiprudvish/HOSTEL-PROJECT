@@ -1,0 +1,655 @@
+Enter password: *******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 16
+Server version: 8.0.28 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use hostelproject
+Database changed
+mysql> desc personalinfo;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| rno         | varchar(20) | NO   | PRI | NULL    |       |
+| studentname | varchar(40) | YES  |     | NULL    |       |
+| year        | int         | YES  |     | NULL    |       |
+| branch      | varchar(10) | YES  |     | NULL    |       |
+| gender      | varchar(1)  | YES  |     | NULL    |       |
+| roomno      | int         | YES  |     | NULL    |       |
+| bid         | int         | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+7 rows in set (0.04 sec)
+
+mysql> CREATE TABLE info(rno varchar(20),studentname varchar(100),year INT,branch varchar(10),gender varchar(2),room_no INT
+    -> , bid INT PRIMARY KEY;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2
+mysql> CREATE TABLE info(rno varchar(20),studentname varchar(100),year INT,branch varchar(10),gender varchar(2),room_no INT
+    -> , bid INT PRIMARY KEY);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc info;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| rno         | varchar(20)  | YES  |     | NULL    |       |
+| studentname | varchar(100) | YES  |     | NULL    |       |
+| year        | int          | YES  |     | NULL    |       |
+| branch      | varchar(10)  | YES  |     | NULL    |       |
+| gender      | varchar(2)   | YES  |     | NULL    |       |
+| room_no     | int          | YES  |     | NULL    |       |
+| bid         | int          | NO   | PRI | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+7 rows in set (0.01 sec)
+
+mysql> desc dashboard;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| deviceid | int      | YES  |     | NULL    |       |
+| bid      | int      | YES  |     | NULL    |       |
+| logdate  | datetime | YES  |     | NULL    |       |
+| C1       | int      | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> alter table dashboard
+    -> Add constraint fk_bid
+    ->
+    -> FOREIGN KEY (bid)
+    -> references info(bid);
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc dashboard;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| deviceid | int      | YES  |     | NULL    |       |
+| bid      | int      | YES  | MUL | NULL    |       |
+| logdate  | datetime | YES  |     | NULL    |       |
+| C1       | int      | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> alter table dashboard
+    -> modify column C1 varchar(10);
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc dashboard;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| deviceid | int         | YES  |     | NULL    |       |
+| bid      | int         | YES  | MUL | NULL    |       |
+| logdate  | datetime    | YES  |     | NULL    |       |
+| C1       | varchar(10) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> dec info
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dec info' at line 1
+mysql> desc info;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| rno         | varchar(20)  | YES  |     | NULL    |       |
+| studentname | varchar(100) | YES  |     | NULL    |       |
+| year        | int          | YES  |     | NULL    |       |
+| branch      | varchar(10)  | YES  |     | NULL    |       |
+| gender      | varchar(2)   | YES  |     | NULL    |       |
+| room_no     | int          | YES  |     | NULL    |       |
+| bid         | int          | NO   | PRI | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+7 rows in set (0.00 sec)
+
+mysql> insert into info values('19071A3248','Sai Prudvish',3,'CSBS','M',910,4001);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into info values('19071A3244','Pravardhan',3,'CSBS','M',910,4002);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into info values('19071A3229','Rohan Kumar',3,'CSBS','M',914,4003);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into info values('19071A3239','Sai Likhith',3,'CSBS','M',907,4004);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into info values('19071A3247','Navaneeth',3,'CSBS','M',914,4005);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into info values('19071A3260','Abhinav',3,'CSBS','M',907,4006);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> desc info;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| rno         | varchar(20)  | YES  |     | NULL    |       |
+| studentname | varchar(100) | YES  |     | NULL    |       |
+| year        | int          | YES  |     | NULL    |       |
+| branch      | varchar(10)  | YES  |     | NULL    |       |
+| gender      | varchar(2)   | YES  |     | NULL    |       |
+| room_no     | int          | YES  |     | NULL    |       |
+| bid         | int          | NO   | PRI | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+7 rows in set (0.01 sec)
+
+mysql> select * from info;
++------------+--------------+------+--------+--------+---------+------+
+| rno        | studentname  | year | branch | gender | room_no | bid  |
++------------+--------------+------+--------+--------+---------+------+
+| 19071A3248 | Sai Prudvish |    3 | CSBS   | M      |     910 | 4001 |
+| 19071A3244 | Pravardhan   |    3 | CSBS   | M      |     910 | 4002 |
+| 19071A3229 | Rohan Kumar  |    3 | CSBS   | M      |     914 | 4003 |
+| 19071A3239 | Sai Likhith  |    3 | CSBS   | M      |     907 | 4004 |
+| 19071A3247 | Navaneeth    |    3 | CSBS   | M      |     914 | 4005 |
+| 19071A3260 | Abhinav      |    3 | CSBS   | M      |     907 | 4006 |
++------------+--------------+------+--------+--------+---------+------+
+6 rows in set (0.01 sec)
+
+mysql> desc dashboard;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| deviceid | int         | YES  |     | NULL    |       |
+| bid      | int         | YES  | MUL | NULL    |       |
+| logdate  | datetime    | YES  |     | NULL    |       |
+| C1       | varchar(10) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into dashboard values(27100,4001,curdate(),'in');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from dashboard;
++----------+------+---------------------+------+
+| deviceid | bid  | logdate             | C1   |
++----------+------+---------------------+------+
+|    27100 | 4001 | 2022-03-08 00:00:00 | in   |
++----------+------+---------------------+------+
+1 row in set (0.01 sec)
+
+mysql> update dashboard set logdate=now();
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from dashboard;
++----------+------+---------------------+------+
+| deviceid | bid  | logdate             | C1   |
++----------+------+---------------------+------+
+|    27100 | 4001 | 2022-03-08 23:22:00 | in   |
++----------+------+---------------------+------+
+1 row in set (0.00 sec)
+
+mysql> insert into dashboard values(27100,4002,now(),'in');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into dashboard values(27101,4003,now(),'in');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into dashboard values(27100,4004,now(),'in');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into dashboard values(27101,4005,now(),'in');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into dashboard values(27101,4001,now(),'out');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from dashboard;
++----------+------+---------------------+------+
+| deviceid | bid  | logdate             | C1   |
++----------+------+---------------------+------+
+|    27100 | 4001 | 2022-03-08 23:22:00 | in   |
+|    27100 | 4002 | 2022-03-08 23:22:38 | in   |
+|    27101 | 4003 | 2022-03-08 23:22:55 | in   |
+|    27100 | 4004 | 2022-03-08 23:23:52 | in   |
+|    27101 | 4005 | 2022-03-08 23:24:15 | in   |
+|    27101 | 4001 | 2022-03-08 23:25:00 | out  |
++----------+------+---------------------+------+
+6 rows in set (0.00 sec)
+
+mysql> select * from info where bid=(select bid from dashboard where C1=in);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'in)' at line 1
+mysql> select * from info where bid=(select bid from dashboard where C1='in');
+ERROR 1242 (21000): Subquery returns more than 1 row
+mysql> select * from info where bid in(select bid from dashboard where C1='in');
++------------+--------------+------+--------+--------+---------+------+
+| rno        | studentname  | year | branch | gender | room_no | bid  |
++------------+--------------+------+--------+--------+---------+------+
+| 19071A3248 | Sai Prudvish |    3 | CSBS   | M      |     910 | 4001 |
+| 19071A3244 | Pravardhan   |    3 | CSBS   | M      |     910 | 4002 |
+| 19071A3229 | Rohan Kumar  |    3 | CSBS   | M      |     914 | 4003 |
+| 19071A3239 | Sai Likhith  |    3 | CSBS   | M      |     907 | 4004 |
+| 19071A3247 | Navaneeth    |    3 | CSBS   | M      |     914 | 4005 |
++------------+--------------+------+--------+--------+---------+------+
+5 rows in set (0.01 sec)
+
+mysql> select * from info where bid in(select bid from dashboard where C1='out');
++------------+--------------+------+--------+--------+---------+------+
+| rno        | studentname  | year | branch | gender | room_no | bid  |
++------------+--------------+------+--------+--------+---------+------+
+| 19071A3248 | Sai Prudvish |    3 | CSBS   | M      |     910 | 4001 |
++------------+--------------+------+--------+--------+---------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from info,select logdate from dashboard where bid in(select bid from dashboard where C1='in');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select logdate from dashboard where bid in(select bid from dashboard where C1='i' at line 1
+mysql> select logdate from dashboard, * from info where bid in(select bid from dashboard where C1='in');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* from info where bid in(select bid from dashboard where C1='in')' at line 1
+mysql> select logdate from dashboard,select * from info where bid in(select bid from dashboard where C1='in');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select * from info where bid in(select bid from dashboard where C1='in')' at line 1
+mysql> select timegap from dashboard where timegap=(select logdate from dashboard where C1='in' and bid=4001)-(select logdate from dashboard where C1='out' and bid=4001);
+ERROR 1054 (42S22): Unknown column 'timegap' in 'field list'
+mysql> (select logdate from dashboard where C1='in' and bid=4001)-(select logdate from dashboard where C1='out' and bid=4001) as timegap;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-(select logdate from dashboard where C1='out' and bid=4001) as timegap' at line 1
+mysql>
+
+
+
+
+
+
+
+
+Enter password: *******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 591
+Server version: 8.0.28 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use hostelproject
+Database changed
+mysql> select * from info;
++------------+--------------+------+--------+--------+---------+------+
+| rno        | studentname  | year | branch | gender | room_no | bid  |
++------------+--------------+------+--------+--------+---------+------+
+| 19071A3248 | Sai Prudvish |    3 | CSBS   | M      |     910 | 4001 |
+| 19071A3244 | Pravardhan   |    3 | CSBS   | M      |     910 | 4002 |
+| 19071A3229 | Rohan Kumar  |    3 | CSBS   | M      |     914 | 4003 |
+| 19071A3239 | Sai Likhith  |    3 | CSBS   | M      |     907 | 4004 |
+| 19071A3247 | Navaneeth    |    3 | CSBS   | M      |     914 | 4005 |
+| 19071A3260 | Abhinav      |    3 | CSBS   | M      |     907 | 4006 |
++------------+--------------+------+--------+--------+---------+------+
+6 rows in set (0.00 sec)
+
+mysql> select * from dashboard;
++----------+------+---------------------+------+
+| deviceid | bid  | logdate             | C1   |
++----------+------+---------------------+------+
+|    27100 | 4001 | 2022-03-08 23:22:00 | in   |
+|    27100 | 4002 | 2022-03-08 23:22:38 | in   |
+|    27101 | 4003 | 2022-03-08 23:22:55 | in   |
+|    27100 | 4004 | 2022-03-08 23:23:52 | in   |
+|    27101 | 4005 | 2022-03-08 23:24:15 | in   |
+|    27101 | 4001 | 2022-03-08 23:25:00 | out  |
++----------+------+---------------------+------+
+6 rows in set (0.00 sec)
+
+mysql> select * from info NATURAL JOIN dashboard;
++------+------------+--------------+------+--------+--------+---------+----------+---------------------+------+
+| bid  | rno        | studentname  | year | branch | gender | room_no | deviceid | logdate             | C1   |
++------+------------+--------------+------+--------+--------+---------+----------+---------------------+------+
+| 4001 | 19071A3248 | Sai Prudvish |    3 | CSBS   | M      |     910 |    27100 | 2022-03-08 23:22:00 | in   |
+| 4002 | 19071A3244 | Pravardhan   |    3 | CSBS   | M      |     910 |    27100 | 2022-03-08 23:22:38 | in   |
+| 4003 | 19071A3229 | Rohan Kumar  |    3 | CSBS   | M      |     914 |    27101 | 2022-03-08 23:22:55 | in   |
+| 4004 | 19071A3239 | Sai Likhith  |    3 | CSBS   | M      |     907 |    27100 | 2022-03-08 23:23:52 | in   |
+| 4005 | 19071A3247 | Navaneeth    |    3 | CSBS   | M      |     914 |    27101 | 2022-03-08 23:24:15 | in   |
+| 4001 | 19071A3248 | Sai Prudvish |    3 | CSBS   | M      |     910 |    27101 | 2022-03-08 23:25:00 | out  |
++------+------------+--------------+------+--------+--------+---------+----------+---------------------+------+
+6 rows in set (0.00 sec)
+
+mysql> select * from info NATURAL JOIN dashboard orderby logdate,C1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'logdate,C1' at line 1
+mysql> select * from info NATURAL JOIN dashboard orderby logdate;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'logdate' at line 1
+mysql> select * from info NATURAL JOIN dashboard order by logdate,C1;
++------+------------+--------------+------+--------+--------+---------+----------+---------------------+------+
+| bid  | rno        | studentname  | year | branch | gender | room_no | deviceid | logdate             | C1   |
++------+------------+--------------+------+--------+--------+---------+----------+---------------------+------+
+| 4001 | 19071A3248 | Sai Prudvish |    3 | CSBS   | M      |     910 |    27100 | 2022-03-08 23:22:00 | in   |
+| 4002 | 19071A3244 | Pravardhan   |    3 | CSBS   | M      |     910 |    27100 | 2022-03-08 23:22:38 | in   |
+| 4003 | 19071A3229 | Rohan Kumar  |    3 | CSBS   | M      |     914 |    27101 | 2022-03-08 23:22:55 | in   |
+| 4004 | 19071A3239 | Sai Likhith  |    3 | CSBS   | M      |     907 |    27100 | 2022-03-08 23:23:52 | in   |
+| 4005 | 19071A3247 | Navaneeth    |    3 | CSBS   | M      |     914 |    27101 | 2022-03-08 23:24:15 | in   |
+| 4001 | 19071A3248 | Sai Prudvish |    3 | CSBS   | M      |     910 |    27101 | 2022-03-08 23:25:00 | out  |
++------+------------+--------------+------+--------+--------+---------+----------+---------------------+------+
+6 rows in set (0.01 sec)
+
+mysql> select * from info NATURAL JOIN dashboard order by desc  logdate,C1;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc  logdate,C1' at line 1
+mysql> select * from info NATURAL JOIN dashboard order by logdate,C1 desc;
++------+------------+--------------+------+--------+--------+---------+----------+---------------------+------+
+| bid  | rno        | studentname  | year | branch | gender | room_no | deviceid | logdate             | C1   |
++------+------------+--------------+------+--------+--------+---------+----------+---------------------+------+
+| 4001 | 19071A3248 | Sai Prudvish |    3 | CSBS   | M      |     910 |    27100 | 2022-03-08 23:22:00 | in   |
+| 4002 | 19071A3244 | Pravardhan   |    3 | CSBS   | M      |     910 |    27100 | 2022-03-08 23:22:38 | in   |
+| 4003 | 19071A3229 | Rohan Kumar  |    3 | CSBS   | M      |     914 |    27101 | 2022-03-08 23:22:55 | in   |
+| 4004 | 19071A3239 | Sai Likhith  |    3 | CSBS   | M      |     907 |    27100 | 2022-03-08 23:23:52 | in   |
+| 4005 | 19071A3247 | Navaneeth    |    3 | CSBS   | M      |     914 |    27101 | 2022-03-08 23:24:15 | in   |
+| 4001 | 19071A3248 | Sai Prudvish |    3 | CSBS   | M      |     910 |    27101 | 2022-03-08 23:25:00 | out  |
++------+------------+--------------+------+--------+--------+---------+----------+---------------------+------+
+6 rows in set (0.00 sec)
+
+mysql> select * from info NATURAL JOIN dashboard order by logdate desc;
++------+------------+--------------+------+--------+--------+---------+----------+---------------------+------+
+| bid  | rno        | studentname  | year | branch | gender | room_no | deviceid | logdate             | C1   |
++------+------------+--------------+------+--------+--------+---------+----------+---------------------+------+
+| 4001 | 19071A3248 | Sai Prudvish |    3 | CSBS   | M      |     910 |    27101 | 2022-03-08 23:25:00 | out  |
+| 4005 | 19071A3247 | Navaneeth    |    3 | CSBS   | M      |     914 |    27101 | 2022-03-08 23:24:15 | in   |
+| 4004 | 19071A3239 | Sai Likhith  |    3 | CSBS   | M      |     907 |    27100 | 2022-03-08 23:23:52 | in   |
+| 4003 | 19071A3229 | Rohan Kumar  |    3 | CSBS   | M      |     914 |    27101 | 2022-03-08 23:22:55 | in   |
+| 4002 | 19071A3244 | Pravardhan   |    3 | CSBS   | M      |     910 |    27100 | 2022-03-08 23:22:38 | in   |
+| 4001 | 19071A3248 | Sai Prudvish |    3 | CSBS   | M      |     910 |    27100 | 2022-03-08 23:22:00 | in   |
++------+------------+--------------+------+--------+--------+---------+----------+---------------------+------+
+6 rows in set (0.00 sec)
+
+mysql> select * from dashboard;
++----------+------+---------------------+------+
+| deviceid | bid  | logdate             | C1   |
++----------+------+---------------------+------+
+|    27100 | 4001 | 2022-03-08 23:22:00 | in   |
+|    27100 | 4002 | 2022-03-08 23:22:38 | in   |
+|    27101 | 4003 | 2022-03-08 23:22:55 | in   |
+|    27100 | 4004 | 2022-03-08 23:23:52 | in   |
+|    27101 | 4005 | 2022-03-08 23:24:15 | in   |
+|    27101 | 4001 | 2022-03-08 23:25:00 | out  |
++----------+------+---------------------+------+
+6 rows in set (0.00 sec)
+
+mysql> select * from dashboard group by bid;
++----------+------+---------------------+------+
+| deviceid | bid  | logdate             | C1   |
++----------+------+---------------------+------+
+|    27100 | 4001 | 2022-03-08 23:22:00 | in   |
+|    27100 | 4002 | 2022-03-08 23:22:38 | in   |
+|    27101 | 4003 | 2022-03-08 23:22:55 | in   |
+|    27100 | 4004 | 2022-03-08 23:23:52 | in   |
+|    27101 | 4005 | 2022-03-08 23:24:15 | in   |
++----------+------+---------------------+------+
+5 rows in set (0.01 sec)
+
+mysql> select max(logdate), bid from dashboard group by bid;
++---------------------+------+
+| max(logdate)        | bid  |
++---------------------+------+
+| 2022-03-08 23:25:00 | 4001 |
+| 2022-03-08 23:22:38 | 4002 |
+| 2022-03-08 23:22:55 | 4003 |
+| 2022-03-08 23:23:52 | 4004 |
+| 2022-03-08 23:24:15 | 4005 |
++---------------------+------+
+5 rows in set (0.01 sec)
+
+mysql> select max(logdate), bid,C1 from dashboard group by bid,C1;
++---------------------+------+------+
+| max(logdate)        | bid  | C1   |
++---------------------+------+------+
+| 2022-03-08 23:22:00 | 4001 | in   |
+| 2022-03-08 23:22:38 | 4002 | in   |
+| 2022-03-08 23:22:55 | 4003 | in   |
+| 2022-03-08 23:23:52 | 4004 | in   |
+| 2022-03-08 23:24:15 | 4005 | in   |
+| 2022-03-08 23:25:00 | 4001 | out  |
++---------------------+------+------+
+6 rows in set (0.01 sec)
+
+mysql> select * from dashboard where bid in(select * from dashboard group by bid);
+ERROR 1241 (21000): Operand should contain 1 column(s)
+mysql> select * from dashboard where logdate,bid=(select max(logdate),bid from dashboard group by bid);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',bid=(select max(logdate),bid from dashboard group by bid)' at line 1
+mysql> select * from dashboard where logdate,bid in (select max(logdate),bid from dashboard group by bid);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',bid in (select max(logdate),bid from dashboard group by bid)' at line 1
+mysql> select * from dashboard where logdate  (select max(logdate) from dashboard group by bid);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select max(logdate) from dashboard group by bid)' at line 1
+mysql> select * from dashboard where logdate in  (select max(logdate) from dashboard group by bid);
++----------+------+---------------------+------+
+| deviceid | bid  | logdate             | C1   |
++----------+------+---------------------+------+
+|    27100 | 4002 | 2022-03-08 23:22:38 | in   |
+|    27101 | 4003 | 2022-03-08 23:22:55 | in   |
+|    27100 | 4004 | 2022-03-08 23:23:52 | in   |
+|    27101 | 4005 | 2022-03-08 23:24:15 | in   |
+|    27101 | 4001 | 2022-03-08 23:25:00 | out  |
++----------+------+---------------------+------+
+5 rows in set (0.01 sec)
+
+mysql> select * from dashboard  natural join (select max(logdate),bid from dashboard group by bid);
+ERROR 1248 (42000): Every derived table must have its own alias
+mysql> create view log as select max(logdate),bid from dashboard group by bid;
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> select * from log;
++---------------------+------+
+| max(logdate)        | bid  |
++---------------------+------+
+| 2022-03-08 23:25:00 | 4001 |
+| 2022-03-08 23:22:38 | 4002 |
+| 2022-03-08 23:22:55 | 4003 |
+| 2022-03-08 23:23:52 | 4004 |
+| 2022-03-08 23:24:15 | 4005 |
++---------------------+------+
+5 rows in set (0.01 sec)
+
+mysql> select * dashboard natural join log;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dashboard natural join log' at line 1
+mysql> select * from dashboard natural join log;
++------+----------+---------------------+------+---------------------+
+| bid  | deviceid | logdate             | C1   | max(logdate)        |
++------+----------+---------------------+------+---------------------+
+| 4001 |    27100 | 2022-03-08 23:22:00 | in   | 2022-03-08 23:25:00 |
+| 4002 |    27100 | 2022-03-08 23:22:38 | in   | 2022-03-08 23:22:38 |
+| 4003 |    27101 | 2022-03-08 23:22:55 | in   | 2022-03-08 23:22:55 |
+| 4004 |    27100 | 2022-03-08 23:23:52 | in   | 2022-03-08 23:23:52 |
+| 4005 |    27101 | 2022-03-08 23:24:15 | in   | 2022-03-08 23:24:15 |
+| 4001 |    27101 | 2022-03-08 23:25:00 | out  | 2022-03-08 23:25:00 |
++------+----------+---------------------+------+---------------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from dashboard inner join log on logdate,bid;
+ERROR 1146 (42S02): Table 'hostelproject.bid' doesn't exist
+mysql> create or replace  view log as select max(logdate) as login,bid from dashboard group by bid;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from log;
++---------------------+------+
+| login               | bid  |
++---------------------+------+
+| 2022-03-08 23:25:00 | 4001 |
+| 2022-03-08 23:22:38 | 4002 |
+| 2022-03-08 23:22:55 | 4003 |
+| 2022-03-08 23:23:52 | 4004 |
+| 2022-03-08 23:24:15 | 4005 |
++---------------------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from dashboard inner join log on dashboard.bid=log.bid;
++----------+------+---------------------+------+---------------------+------+
+| deviceid | bid  | logdate             | C1   | login               | bid  |
++----------+------+---------------------+------+---------------------+------+
+|    27100 | 4001 | 2022-03-08 23:22:00 | in   | 2022-03-08 23:25:00 | 4001 |
+|    27100 | 4002 | 2022-03-08 23:22:38 | in   | 2022-03-08 23:22:38 | 4002 |
+|    27101 | 4003 | 2022-03-08 23:22:55 | in   | 2022-03-08 23:22:55 | 4003 |
+|    27100 | 4004 | 2022-03-08 23:23:52 | in   | 2022-03-08 23:23:52 | 4004 |
+|    27101 | 4005 | 2022-03-08 23:24:15 | in   | 2022-03-08 23:24:15 | 4005 |
+|    27101 | 4001 | 2022-03-08 23:25:00 | out  | 2022-03-08 23:25:00 | 4001 |
++----------+------+---------------------+------+---------------------+------+
+6 rows in set (0.01 sec)
+
+mysql> select * from dashboard inner join log on dashboard.bid=log.bid and dashboard.logdate=log.login;
++----------+------+---------------------+------+---------------------+------+
+| deviceid | bid  | logdate             | C1   | login               | bid  |
++----------+------+---------------------+------+---------------------+------+
+|    27100 | 4002 | 2022-03-08 23:22:38 | in   | 2022-03-08 23:22:38 | 4002 |
+|    27101 | 4003 | 2022-03-08 23:22:55 | in   | 2022-03-08 23:22:55 | 4003 |
+|    27100 | 4004 | 2022-03-08 23:23:52 | in   | 2022-03-08 23:23:52 | 4004 |
+|    27101 | 4005 | 2022-03-08 23:24:15 | in   | 2022-03-08 23:24:15 | 4005 |
+|    27101 | 4001 | 2022-03-08 23:25:00 | out  | 2022-03-08 23:25:00 | 4001 |
++----------+------+---------------------+------+---------------------+------+
+5 rows in set (0.00 sec)
+
+Enter password: *******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.28 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use hostelproject
+Database changed
+mysql> select * from info;
++------------+-------------------------+------+--------+--------+---------+------+
+| rno        | studentname             | year | branch | gender | room_no | bid  |
++------------+-------------------------+------+--------+--------+---------+------+
+| 19071A3248 | Sai Prudvish            |    3 | CSBS   | M      |     910 | 4001 |
+| 19071A3244 | Pravardhan              |    3 | CSBS   | M      |     910 | 4002 |
+| 19071A3229 | Rohan Kumar             |    3 | CSBS   | M      |     914 | 4003 |
+| 19071A3239 | Sai Likhith             |    3 | CSBS   | M      |     907 | 4004 |
+| 19071A3247 | Navaneeth               |    3 | CSBS   | M      |     914 | 4005 |
+| 19071A3260 | Abhinav                 |    3 | CSBS   | M      |     907 | 4006 |
+| 19071A3211 | Rushikesh reddy Doralla |    3 | CSBS   | M      |     915 | 4007 |
+| 19071A3201 | Siddartha Adurinti      |    3 | CSBS   | M      |     907 | 4008 |
+| 19071A3203 | Shashank Appanna        |    3 | CSBS   | M      |     907 | 4009 |
+| 19071A1019 | Ajay Indrala            |    3 | CSBS   | M      |     914 | 4010 |
+| 19071A1014 | Manisharan Ellanki      |    3 | CSBS   | M      |     906 | 4011 |
+| 19071A1009 | Chala Sathwik Abbu      |    3 | CSBS   | M      |     907 | 4012 |
+| 19071A1022 | Sri Sai Sidhanth        |    3 | IT     | M      |     907 | 4013 |
+| 19071AF329 | Pari Sumanth            |    3 | AE     | M      |     907 | 4014 |
+| 19071AF380 | Ramesh Geela            |    3 | AE     | M      |     908 | 4015 |
+| 19071AF999 | Sravani Reddy           |    3 | AE     | M      |     908 | 4016 |
+| 19071A3202 | Shruthika Akula         |    3 | CSBS   | F      |     415 | 4017 |
+| 19071A3215 | Nandhini Gadkol         |    3 | CSBS   | F      |     415 | 4018 |
+| 20075A3202 | Snigdha                 |    3 | CSBS   | F      |     408 | 4019 |
+| 19071A3208 | Bhargavi Kotagiri       |    3 | CSBS   | F      |     408 | 4020 |
+| 19071A4520 | Sankeerthana Rampelli   |    4 | CSBS   | f      |     212 | 4022 |
+| 19071A4530 | Rithvik Kondapalkala    |    4 | EI     | M      |     212 | 4023 |
+| 190713B530 | Rasagna Kondapalkala    |    4 | EI     | F      |     272 | 4024 |
+| 19071A3226 | K.VARUN RAO             |    3 | CSBS   | M      |     914 | 4025 |
+| 19071A3259 | Hareen Sai              |    3 | CSBS   | M      |     920 | 4026 |
+| 19071A4512 | Suchith                 |    3 | CE     | M      |     903 | 4027 |
+| 19071A3246 | Supriya Rachakonda      |    3 | CSBS   | F      |     282 | 4028 |
+| 19071A3218 | srikar raji             |    3 | IT     | M      |     912 | 4029 |
+| 19071A3274 | m rahul                 |    3 | IT     | M      |     912 | 4030 |
+| 19071A3857 | m ram                   |    3 | IT     | M      |     912 | 4031 |
+| 19071A3870 | m rajesh                |    3 | IT     | M      |     912 | 4032 |
+| 19071B3870 | m hari                  |    3 | IT     | M      |     912 | 4033 |
+| 19071B3890 | m murali                |    3 | IT     | M      |     912 | 4034 |
+| 19071B3897 | j rali                  |    3 | IT     | M      |     912 | 4035 |
+| 19071C3897 | o raliq                 |    3 | IT     | M      |     912 | 4036 |
+| 19071A3243 | P sahanya               |    3 | CSBS   | F      |     910 | 4040 |
+| 19071A4N50 | AAMIR MOHAMMAD          |    4 | ECE    | M      |     870 | 4042 |
++------------+-------------------------+------+--------+--------+---------+------+
+37 rows in set (0.07 sec)
+
+mysql> select * from dashboard;
++----------+------+---------------------+------+
+| deviceid | bid  | logdate             | C1   |
++----------+------+---------------------+------+
+|    27100 | 4001 | 2022-03-08 23:22:00 | in   |
+|    27100 | 4002 | 2022-03-08 23:22:38 | in   |
+|    27101 | 4003 | 2022-03-08 23:22:55 | in   |
+|    27100 | 4004 | 2022-03-08 23:23:52 | in   |
+|    27101 | 4005 | 2022-03-08 23:24:15 | in   |
+|    27101 | 4001 | 2022-03-08 23:25:00 | out  |
+|    27100 | 4006 | 2022-03-21 00:48:19 | in   |
+|    27101 | 4002 | 2022-03-21 00:48:42 | out  |
+|    27101 | 4003 | 2022-03-21 00:49:00 | in   |
+|    27100 | 4003 | 2022-03-21 16:02:40 | out  |
+|    27100 | 4005 | 2022-03-21 16:04:26 | out  |
+|    27100 | 4002 | 2022-03-21 16:05:44 | out  |
+|    27100 | 4002 | 2022-03-21 16:08:46 | in   |
+|    27100 | 4001 | 2022-03-21 16:16:03 | in   |
+|    27003 | 4017 | 2022-03-21 18:46:44 | in   |
+|    27003 | 4018 | 2022-03-21 18:46:55 | in   |
+|    27003 | 4011 | 2022-03-21 18:47:04 | in   |
+|    27003 | 4012 | 2022-03-21 18:47:09 | in   |
+|    27003 | 4013 | 2022-03-21 18:47:14 | in   |
+|    27003 | 4013 | 2022-03-21 18:47:24 | out  |
+|    27003 | 4018 | 2022-03-21 18:47:37 | out  |
+|    27102 | 4018 | 2022-03-27 00:24:12 | in   |
+|    27003 | 4018 | 2022-03-27 00:29:26 | out  |
+|    27003 | 4012 | 2022-03-27 00:33:34 | out  |
+|    27003 | 4026 | 2022-03-27 00:41:57 | in   |
+|    27003 | 4026 | 2022-03-27 00:43:53 | out  |
+|    27102 | 4002 | 2022-03-29 20:40:47 | in   |
+|    27100 | 4001 | 2022-03-29 20:43:18 | out  |
+|    27100 | 4001 | 2022-05-15 22:52:10 | in   |
+|    27100 | 4002 | 2022-05-15 22:52:34 | in   |
+|    27100 | 4003 | 2022-05-15 22:52:39 | in   |
+|    27100 | 4004 | 2022-05-15 22:52:49 | in   |
+|    27100 | 4005 | 2022-05-15 22:52:54 | in   |
+|    27100 | 4006 | 2022-05-15 22:53:00 | in   |
+|    27100 | 4007 | 2022-05-15 22:53:06 | in   |
+|    27100 | 4008 | 2022-05-15 22:53:16 | in   |
+|    27100 | 4009 | 2022-05-15 22:53:20 | in   |
+|    27100 | 4010 | 2022-05-15 22:53:26 | in   |
+|    27100 | 4011 | 2022-05-15 22:53:53 | in   |
+|    27100 | 4012 | 2022-05-15 22:53:57 | in   |
+|    27100 | 4013 | 2022-05-15 22:54:00 | in   |
+|    27100 | 4014 | 2022-05-15 22:54:20 | in   |
+|    27100 | 4015 | 2022-05-15 22:54:23 | in   |
+|    27100 | 4016 | 2022-05-15 22:54:27 | in   |
+|    27100 | 4017 | 2022-05-15 22:54:31 | in   |
+|    27100 | 4018 | 2022-05-15 22:54:36 | in   |
+|    27100 | 4019 | 2022-05-15 22:54:40 | in   |
+|    27100 | 4020 | 2022-05-15 22:54:46 | in   |
+|    27100 | 4025 | 2022-05-15 22:54:51 | in   |
+|    27100 | 4027 | 2022-05-15 22:54:56 | in   |
+|    27100 | 4026 | 2022-05-15 22:55:08 | in   |
+|    27100 | 4001 | 2022-05-15 22:56:35 | out  |
+|    27100 | 4002 | 2022-05-15 22:56:40 | out  |
+|    27100 | 4003 | 2022-05-15 22:56:44 | out  |
+|    27100 | 4004 | 2022-05-15 22:56:48 | out  |
+|    27100 | 4005 | 2022-05-15 22:56:53 | out  |
+|    27100 | 4006 | 2022-05-15 22:57:35 | out  |
+|    27100 | 4022 | 2022-05-15 23:01:25 | in   |
+|    27100 | 4028 | 2022-05-15 23:04:57 | in   |
+|    27100 | 4028 | 2022-05-15 23:06:19 | out  |
+|    27100 | 4028 | 2022-05-15 23:06:27 | in   |
+|    27100 | 4028 | 2022-05-15 23:06:33 | out  |
+|    27100 | 4001 | 2022-05-15 23:21:08 | in   |
+|    27100 | 4001 | 2022-05-15 23:25:37 | out  |
+|    27120 | 4028 | 2022-05-29 22:15:22 | in   |
+|    27120 | 4028 | 2022-05-29 22:16:12 | out  |
+|    27120 | 4028 | 2022-05-29 22:16:45 | in   |
+|    27120 | 4028 | 2022-05-29 22:21:31 | in   |
+|    27120 | 4029 | 2022-05-30 00:25:37 | in   |
+|    27120 | 4030 | 2022-05-30 00:34:15 | in   |
+|    27120 | 4030 | 2022-05-30 00:47:18 | in   |
+|    27120 | 4031 | 2022-05-30 00:48:05 | in   |
+|    27120 | 4040 | 2022-05-30 00:53:32 | in   |
+|    27120 | 4040 | 2022-05-30 00:53:42 | out  |
+|    27120 | 4040 | 2022-05-30 00:53:46 | in   |
+|    27120 | 4040 | 2022-05-30 00:53:49 | out  |
+|    27120 | 4025 | 2022-05-30 11:25:22 | out  |
+|    27120 | 4025 | 2022-05-30 12:07:04 | out  |
+|    27120 | 4022 | 2022-05-30 12:07:30 | out  |
+|    27120 | 4028 | 2022-06-10 20:19:52 | out  |
+|    27120 | 4028 | 2022-06-10 20:20:33 | in   |
+|    27120 | 4022 | 2022-06-10 21:01:38 | in   |
++----------+------+---------------------+------+
+82 rows in set (0.01 sec)
+
+mysql>
